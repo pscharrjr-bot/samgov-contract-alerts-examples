@@ -1,0 +1,40 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SAM.gov Contract Alerts: filter examples & sample output</title>
+<meta name="description" content="Examples for SAM.gov Contract Opportunity Alerts on Apify: NAICS, PSC, set-aside and state filters, sample output, and daily scheduling.">
+<style>body{font-family:system-ui,sans-serif;max-width:820px;margin:2rem auto;padding:0 1rem;line-height:1.55;color:#222}pre{background:#f4f4f6;padding:1rem;overflow:auto;border-radius:6px}a.btn{display:inline-block;background:#1f6feb;color:#fff;padding:.6rem 1rem;border-radius:6px;text-decoration:none}</style></head><body>
+<h1>SAM.gov Contract Opportunity Alerts: examples</h1>
+<p>New federal contract opportunities from the official SAM.gov API, filtered by keyword, NAICS, PSC, set-aside, agency, state and notice type. Scheduled runs return only notices you haven't seen. You bring your own free SAM.gov API key.</p>
+<p><a class="btn" href="https://apify.com/xprm-llc/samgov-contract-alerts">Open on Apify Store</a></p>
+<h2>Filter examples</h2>
+<h3>Small-business IT in the DC area</h3>
+<pre>{
+  "samApiKey": "YOUR_SAM_GOV_KEY",
+  "naicsCodes": ["541512", "541519"],
+  "setAsideTypes": ["SBA", "SDVOSBC", "8A"],
+  "states": ["VA", "MD", "DC"],
+  "noticeTypes": ["o", "k", "r"],
+  "postedWithinDays": 3
+}</pre>
+<h3>Cybersecurity keywords from Veterans Affairs</h3>
+<pre>{ "samApiKey": "YOUR_SAM_GOV_KEY", "keywords": ["cybersecurity", "cloud"], "agency": "VETERANS AFFAIRS", "postedWithinDays": 7 }</pre>
+<h3>Construction in Texas (PSC Y/Z)</h3>
+<pre>{ "samApiKey": "YOUR_SAM_GOV_KEY", "pscCodes": ["Y1", "Z2"], "states": ["TX"], "stateStoreName": "samgov-tx-construction" }</pre>
+<p>Notice types: o Solicitation, k Combined Synopsis/Solicitation, p Presolicitation, r Sources Sought, s Special Notice, a Award. Get a key at sam.gov &gt; Account Details &gt; Public API Key.</p>
+<h2>Sample output row</h2>
+<pre>{
+  "title": "TESSY CONTROL PANEL",
+  "solicitationNumber": "(as listed on SAM.gov)",
+  "agency": "DEPT OF DEFENSE",
+  "noticeType": "Combined Synopsis/Solicitation",
+  "naicsCode": "333612",
+  "setAside": "SBA",
+  "postedDate": "2026-10-15",
+  "responseDeadline": "2026-10-30T14:00:00-04:00",
+  "placeCity": "Portsmouth", "placeState": "VA",
+  "samUrl": "https://sam.gov/opp/c314ee6b47714a50b0397d0d590387bf/view",
+  "contactName": "Contracting Officer", "contactEmail": "co@example.mil"
+}</pre>
+<h2>Scheduling tip</h2>
+<p>Save your input as a task, then add a schedule such as <code>0 7 * * 1-5</code> (7:00 on weekdays). Set <em>Posted within last N days</em> to 2-3 so weekends are covered. Built-in dedupe means you only get, and only pay for, new notices. Add an email, Slack or Google Sheets integration to the task to receive them. Free SAM.gov keys allow about 10 API calls a day, so keep <em>Max SAM.gov API requests</em> at 1-2.</p>
+<p><a href="https://apify.com/xprm-llc/samgov-contract-alerts">SAM.gov Contract Opportunity Alerts on Apify</a>. Not affiliated with GSA or SAM.gov.</p>
+</body></html>
