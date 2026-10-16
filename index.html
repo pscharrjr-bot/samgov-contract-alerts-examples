@@ -21,18 +21,35 @@
 <pre>{ "samApiKey": "YOUR_SAM_GOV_KEY", "pscCodes": ["Y1", "Z2"], "states": ["TX"], "stateStoreName": "samgov-tx-construction" }</pre>
 <p>Notice types: o Solicitation, k Combined Synopsis/Solicitation, p Presolicitation, r Sources Sought, s Special Notice, a Award. Get a key at sam.gov &gt; Account Details &gt; Public API Key.</p>
 <h2>Sample output row</h2>
+<p>A real row from a live run (October 2026); contact email replaced with an example placeholder.</p>
 <pre>{
-  "title": "TESSY CONTROL PANEL",
-  "solicitationNumber": "(as listed on SAM.gov)",
-  "agency": "DEPT OF DEFENSE",
-  "noticeType": "Combined Synopsis/Solicitation",
-  "naicsCode": "333612",
-  "setAside": "SBA",
-  "postedDate": "2026-10-15",
-  "responseDeadline": "2026-10-30T14:00:00-04:00",
-  "placeCity": "Portsmouth", "placeState": "VA",
-  "samUrl": "https://sam.gov/opp/c314ee6b47714a50b0397d0d590387bf/view",
-  "contactName": "Contracting Officer", "contactEmail": "co@example.mil"
+  &quot;noticeId&quot;: &quot;c314ee6b47714a50b0397d0d590387bf&quot;,
+  &quot;title&quot;: &quot;TESSY CONTROL PANEL&quot;,
+  &quot;solicitationNumber&quot;: &quot;SPMYM127Q4001&quot;,
+  &quot;agency&quot;: &quot;DEPT OF DEFENSE&quot;,
+  &quot;subTier&quot;: &quot;DEFENSE LOGISTICS AGENCY&quot;,
+  &quot;office&quot;: &quot;DLA MARITIME - NORFOLK&quot;,
+  &quot;agencyPath&quot;: &quot;DEPT OF DEFENSE.DEFENSE LOGISTICS AGENCY.DLA MARITIME.DLA MARITIME SHIPYARDS.DLA MARITIME - NORFOLK&quot;,
+  &quot;noticeType&quot;: &quot;Combined Synopsis/Solicitation&quot;,
+  &quot;baseType&quot;: &quot;Combined Synopsis/Solicitation&quot;,
+  &quot;naicsCode&quot;: &quot;335999&quot;,
+  &quot;pscCode&quot;: &quot;5975&quot;,
+  &quot;setAside&quot;: &quot;SBA&quot;,
+  &quot;setAsideDescription&quot;: &quot;Small Business Set Aside - Total&quot;,
+  &quot;postedDate&quot;: &quot;2026-10-16&quot;,
+  &quot;responseDeadline&quot;: &quot;2026-10-20T13:00:00-04:00&quot;,
+  &quot;archiveDate&quot;: &quot;2026-11-04&quot;,
+  &quot;active&quot;: true,
+  &quot;placeCity&quot;: &quot;Portsmouth&quot;,
+  &quot;placeState&quot;: &quot;VA&quot;,
+  &quot;placeZip&quot;: &quot;23709&quot;,
+  &quot;placeCountry&quot;: &quot;USA&quot;,
+  &quot;samUrl&quot;: &quot;https://sam.gov/opp/c314ee6b47714a50b0397d0d590387bf/view&quot;,
+  &quot;contactName&quot;: &quot;Steven Treherne&quot;,
+  &quot;contactEmail&quot;: &quot;contact@example.com (example placeholder)&quot;,
+  &quot;contactPhone&quot;: &quot;7572785022&quot;,
+  &quot;awardAmount&quot;: null,
+  &quot;awardee&quot;: null
 }</pre>
 <h2>Scheduling tip</h2>
 <p>Save your input as a task, then add a schedule such as <code>0 7 * * 1-5</code> (7:00 on weekdays). Set <em>Posted within last N days</em> to 2-3 so weekends are covered. Built-in dedupe means you only get, and only pay for, new notices. Add an email, Slack or Google Sheets integration to the task to receive them. Free SAM.gov keys allow about 10 API calls a day, so keep <em>Max SAM.gov API requests</em> at 1-2.</p>
